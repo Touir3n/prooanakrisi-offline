@@ -1,0 +1,380 @@
+body { 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    margin: 0; 
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #e0eaf5 0%, #cbd5e1 100%);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.container { 
+    display: flex; flex-direction: column; gap: 20px; max-width: 1100px; margin: auto; 
+    background: rgba(255, 255, 255, 0.5); /* Glassmorphism Base */
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);
+}
+
+/* Νέο Στυλ Κεφαλίδας */
+.header-box { 
+    text-align: center; 
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white; 
+    padding: 24px; 
+    border-radius: 12px; 
+    border-bottom: 4px solid #f59e0b; 
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); 
+}
+.header-box h1 { margin: 0; font-size: 28px; letter-spacing: 0.5px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+.header-box p { margin: 8px 0 0 0; font-size: 14px; color: #fcd34d; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.9; }
+
+/* Νέο Global Banner Προστασίας Δεδομένων */
+.privacy-banner {
+    display: none; /* Αφαιρέθηκε */
+}
+
+.ai-settings { display: none; }
+.global-settings { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(129, 199, 132, 0.5); border-left: 5px solid #4caf50; padding: 12px; border-radius: 10px; margin-bottom: 0px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+
+.section { background-color: rgba(255, 255, 255, 0.9); padding: 25px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.02); border: 1px solid rgba(255, 255, 255, 0.9); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.section:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04), 0 4px 6px -2px rgba(0,0,0,0.02); }
+.section-title { 
+    background: linear-gradient(to right, #1e293b, #334155);
+    color: white; 
+    padding: 14px 24px; 
+    border-radius: 12px 12px 0 0; 
+    margin: -25px -25px 20px -25px; 
+    font-size: 16px; 
+    font-weight: 600; 
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.grid-form { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 16px; row-gap: 16px; margin-top: 10px; }
+.form-group { display: flex; flex-direction: column; }
+label { font-weight: 600; font-size: 13px; color: #475569; margin-bottom: 5px; }
+input[type="text"], input[type="password"], select { 
+    padding: 12px 14px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    font-family: inherit;
+    box-sizing: border-box; 
+    width: 100%; 
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.01);
+}
+input[type="text"]:focus, input[type="password"]:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.input-error { border: 2px solid #ef4444 !important; background-color: #fef2f2 !important; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important; }
+
+.manual-input { border-left: 4px solid #f59e0b; background-color: #fffbeb; } 
+.accent-warning { border-left: 4px solid #ef4444 !important; background-color: #fef2f2 !important; } 
+
+textarea.pol-input { width: 100%; height: 80px; border: 2px dashed #94a3b8; border-radius: 8px; padding: 12px; box-sizing: border-box; font-size: 13px; font-family: inherit; background: #f8fafc; transition: all 0.2s ease; }
+textarea.pol-input:focus { border-color: #3b82f6; background: #ffffff; outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+
+/* ================= ΚΟΥΜΠΙΑ (ΝΕΟ ΚΟΜΨΟ ΣΤΥΛ) ================= */
+button { 
+    padding: 12px 16px; 
+    color: white; 
+    border: 1px solid rgba(0,0,0,0.08); /* Πολύ απαλό περίγραμμα */
+    border-radius: 8px; /* Στρογγυλεμένες άκρες */
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 14.5px; 
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ελαφριά εξωτερική σκιά */
+    /* Εφέ γυαλάδας/βάθους πάνω από οποιοδήποτε χρώμα: */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%); 
+}
+
+/* Κίνηση όταν περνάει το ποντίκι */
+button:hover, .btn-secondary:hover {
+    transform: translateY(-2px); /* Ανασηκώνεται ελαφρώς */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Η σκιά μεγαλώνει */
+    filter: brightness(1.1); /* Γίνεται πιο φωτεινό */
+}
+
+/* Κίνηση στο κλικ */
+button:active, .btn-secondary:active {
+    transform: translateY(1px); /* Πατιέται μέσα */
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    filter: brightness(0.9);
+}
+
+/* --- Κουμπιά Top Action Bar --- */
+.top-action-bar { display: flex; gap: 12px; justify-content: center; margin-bottom: 15px; margin-top: 15px; }
+.top-action-bar > * { flex: 1; font-size: 14px !important; }
+
+.btn-primary { background: linear-gradient(135deg, #4f46e5, #3b82f6); border: 1px solid rgba(255,255,255,0.2); }
+.btn-secondary { background: linear-gradient(135deg, #0ea5e9, #0284c7); padding: 12px 16px; color: white; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.25s ease; display: inline-flex; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.2); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); border: 1px solid rgba(255,255,255,0.2); }
+.btn-darkmode { background: linear-gradient(135deg, #334155, #0f172a); border: 1px solid rgba(255,255,255,0.2); }
+
+/* --- Βοηθητικά Κουμπιά (Πάνω μέρος) --- */
+.btn-parse { background: linear-gradient(135deg, #0288d1, #0277bd); flex: 2; border: 1px solid rgba(255,255,255,0.15); }
+.btn-clear { background: linear-gradient(135deg, #64748b, #475569); flex: 1; border: 1px solid rgba(255,255,255,0.15); }
+.btn-add { background: linear-gradient(135deg, #0ea5e9, #0284c7); padding: 10px; height: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); }
+.btn-copy { background: linear-gradient(135deg, #10b981, #059669); width: 100%; margin-top: 15px; border: 1px solid rgba(255,255,255,0.2); }
+
+/* --- Κουμπιά AI (Διατηρούν το μωβ τους) --- */
+.btn-ai { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: white; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; border: 1px solid rgba(255,255,255,0.2); }
+.btn-ai:hover { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+.btn-ai:disabled { background: #cbd5e1; color: #94a3b8; cursor: not-allowed; box-shadow: none; transform: none; border: none; }
+.btn-undo { background: linear-gradient(135deg, #64748b, #475569); padding: 6px 10px; font-size: 11px; }
+
+/* --- ΚΟΥΜΠΙΑ ΕΞΑΓΩΓΗΣ (ΤΑ ΜΕΓΑΛΑ ΣΤΟ ΚΑΤΩ ΜΕΡΟΣ) --- */
+[class^="btn-word"] {
+    width: 100%; 
+    margin-top: 15px; 
+    font-size: 14.5px; 
+    padding: 12px; 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+    height: fit-content; 
+    align-self: center; 
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+/* Απαλότερα και πιο επαγγελματικά χρώματα για τις κατηγορίες */
+.btn-word { background: linear-gradient(135deg, #3b82f6, #2563eb); }             /* Μπλε (Γενικό Word) */
+.btn-word-no-oath { background: linear-gradient(135deg, #ec4899, #db2777); }     /* Ροζ (Ενδοοικογενειακή) */
+.btn-word-arrest { background: linear-gradient(135deg, #ef4444, #dc2626); }      /* Έντονο Κόκκινο (Σύλληψη) */
+.btn-word-rights { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }      /* Μωβ (Δικαιώματα) */
+.btn-word-apologia { background: linear-gradient(135deg, #10b981, #059669); }    /* Πράσινο (Απολογία) */
+.btn-word-warning { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; } /* Πορτοκαλί */
+.btn-word-secondary { background: linear-gradient(135deg, #64748b, #475569); }   /* Γκρι (Υπόμνημα) */
+
+/* Ειδική διόρθωση για το κίτρινο κουμπί (Χορήγηση Προθεσμίας) ώστε να έχει σκούρα γράμματα και να διαβάζεται τέλεια */
+button[style*="ffc107"] {
+    color: #422000 !important;
+    text-shadow: none !important;
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%) !important;
+}
+/* ============================================================ */
+
+.flex-row { display: flex; gap: 10px; margin-top: 10px; }
+.info-text { font-size: 12px; color: #555; margin-bottom: 10px; line-height: 1.4; background: #eef; padding: 10px; border-radius: 4px;}
+
+/* ================= ΚΑΡΤΕΛΕΣ (TABS) - ΝΕΟ ΚΟΜΨΟ ΣΤΥΛ ================= */
+/* ================= ΚΑΡΤΕΛΕΣ (ΜΟΝΤΕΡΝΟ PILL DESIGN) ================= */
+.tabs { 
+    display: flex; 
+    background: #e2e8f0; /* Ξεκάθαρο γκρι φόντο για το container */
+    padding: 6px;
+    border-radius: 12px;
+    margin-top: 25px; 
+    gap: 8px; 
+    flex-wrap: wrap; 
+    border: 1px solid #cbd5e1;
+}
+
+.tab-btn { 
+    background: #f8fafc !important; 
+    color: #475569 !important; 
+    border: 1px solid #cbd5e1 !important; 
+    padding: 10px 18px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    font-weight: 600; 
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Όταν το ποντίκι περνάει από πάνω (Hover) */
+.tab-btn:hover { 
+    background: #e2e8f0 !important; 
+    color: #0f172a !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08) !important;
+}
+
+/* --- ΕΝΕΡΓΗ ΚΑΡΤΕΛΑ (Πετάγεται μπροστά) --- */
+.tab-btn.active { 
+    background: #3b82f6 !important; 
+    color: #ffffff !important; 
+    border-color: #2563eb !important;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3) !important; 
+}
+
+/* Χρώματα για τις ενεργές καρτέλες ανάλογα με την κατηγορία (Light Mode) */
+.tab-btn-pink.active { color: #d81b60 !important; }
+.tab-btn-red.active { color: #dc2626 !important; }
+.tab-btn-orange.active { color: #ea580c !important; }
+.tab-btn[onclick*="'drugs'"].active { color: #0891b2 !important; }
+
+/* Περιεχόμενο (Το λευκό κουτί κάτω από τις καρτέλες) */
+.tab-content { 
+    display: none; 
+    background: transparent; 
+    border: none; 
+    padding: 15px 0 0 0; 
+    border-radius: 0; 
+    box-shadow: none; 
+    margin-top: 5px;
+}
+.tab-content.active { display: block; }
+.tab-content textarea { width: 100%; border: 1px solid #ccc; border-radius: 4px; padding: 8px; box-sizing: border-box; font-family: Arial; font-size: 13px; resize: vertical; transition: border 0.3s;}
+/* ==================================================================== */
+
+.dv-item { margin-bottom: 10px; }
+.dv-item label { display: block; color: #0056b3; font-size: 12px; margin-bottom: 4px; font-weight: bold;}
+.dv-item textarea { height: 40px; }
+.dv-item.large textarea { height: 70px; }
+
+/* ================= ΚΑΡΤΕΣ ΕΝΟΤΗΤΩΝ (MODERN PANELS) ================= */
+.modern-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.modern-panel-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body.dark-mode .modern-panel {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+}
+body.dark-mode .modern-panel-title {
+    color: #93c5fd !important;
+    border-bottom-color: rgba(255,255,255,0.1) !important;
+}
+
+.step-box { border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px; margin-bottom: 15px; background: #fafafa; }
+.step-title { font-size: 15px; font-weight: bold; margin-top: 0; margin-bottom: 10px; display: block; background: transparent; padding: 0 0 5px 0; border: none; border-bottom: 2px solid currentColor; }
+
+.ai-box { background: #f4ecf8; border: 1px solid #cbb3f5; border-left: 4px solid #8e44ad; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+.ai-result { background: #e8f5e9; border: 1px solid #c3e6cb; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 13px; color: #155724; display: none; }
+.ai-result.error { background: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+
+.arrest-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 10px; }
+.time-grid-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; width: 100%; }
+.time-box { display: flex; gap: 5px; width: 100%; align-items: center; }
+.time-box input { flex: 1; min-width: 0; box-sizing: border-box; text-align: center; font-weight: bold; color: #003366; }
+
+.witness-settings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px; background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #eee;}
+
+.spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* ==========================================
+   ΣΥΣΤΗΜΑ DARK MODE (ΑΠΟΛΥΤΟ & ΤΕΛΙΚΟ)
+   ========================================== */
+
+/* 1. Βασικό Φόντο Οθόνης */
+html, body.dark-mode {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important; 
+    color: #e2e8f0 !important;
+    min-height: 100vh !important;
+    margin: 0;
+}
+
+body.dark-mode .container {
+    background: rgba(30, 41, 59, 0.7) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* 2. Σκοτείνιασμα ΟΛΩΝ των Πλαισίων */
+body.dark-mode .section,
+body.dark-mode .global-settings,
+body.dark-mode .step-box,
+body.dark-mode .witness-settings-grid,
+body.dark-mode .tab-content {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+/* 3. Καταστροφή κάθε "καρφωτού" (inline) χρώματος μέσα στην HTML */
+body.dark-mode div[style*="background"] {
+    background: transparent !important;
+    border-color: rgba(255,255,255,0.05) !important;
+}
+
+/* 4. Κουμπιά Καρτελών (Tabs) - Εμφανές Dark Mode */
+body.dark-mode .tabs {
+    background: #0f172a !important; /* Πολύ σκούρο μπλε/μαύρο για να ξεχωρίζει το container */
+    border: 1px solid #1e293b !important;
+}
+body.dark-mode .tab-btn {
+    background: #1e293b !important;
+    color: #cbd5e1 !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+}
+body.dark-mode .tab-btn:hover {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+body.dark-mode .tab-btn.active {
+    background: #3b82f6 !important; /* Έντονο Μπλε για την επιλεγμένη καρτέλα */
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* 5. Πεδία Εισαγωγής & Φόρμες (Glassmorphism Dark) */
+body.dark-mode input, 
+body.dark-mode textarea, 
+body.dark-mode select {
+    background: rgba(15, 23, 42, 0.6) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+body.dark-mode input:focus, 
+body.dark-mode textarea:focus, 
+body.dark-mode select:focus {
+    border-color: #3b82f6 !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Ειδικά Inputs */
+body.dark-mode .manual-input { background: rgba(245, 158, 11, 0.1) !important; border-left-color: #f59e0b !important; }
+body.dark-mode .accent-warning { background: rgba(239, 68, 68, 0.1) !important; border-left-color: #ef4444 !important; }
+
+/* 6. Κείμενα, Τίτλοι και Labels */
+body.dark-mode label, 
+body.dark-mode .info-text,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode strong,
+body.dark-mode h4 {
+    color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* Ειδικό Σκοτείνιασμα για τους Τίτλους των Κουτιών */
+body.dark-mode .step-title,
+body.dark-mode .section-title,
+body.dark-mode .header-box {
+    background: transparent !important;
+    color: #93c5fd !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
